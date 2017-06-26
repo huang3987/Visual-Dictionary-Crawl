@@ -7,6 +7,7 @@ import os
 
 
 local_first_URL = 'H:/visual.merriam-webster.com/plants-gardening/plants/alga/examples-algae.php.htm'
+#注意这里URL里面的分隔符""/",和正常的分隔符不一样,千万不要写错了,查错查半天的.
 
 local_current_URL = local_first_URL
 
