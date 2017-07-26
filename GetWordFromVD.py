@@ -1,4 +1,4 @@
-    #_*_ coding:utf-8 _*_
+
 
 import re
 import codecs
@@ -6,8 +6,8 @@ import ConfigParser
 import os
 
 
-local_first_URL = 'H:/visual.merriam-webster.com/plants-gardening/plants/alga/examples-algae.php.htm'
-#注意这里URL里面的分隔符""/",和正常的分隔符不一样,千万不要写错了,查错查半天的.
+local_first_URL = u'G:/visual.merriam-webster.com/animal-kingdom/flying-mammal/examples-bats.php.htm'
+                     #note for the "/" , is defferent from the "\" in the original web url, or you will make a mistake 
 
 local_current_URL = local_first_URL
 
@@ -16,7 +16,7 @@ local_next_URL = ''
 
 filename = 'profile.ini'
 
-progress = 23
+progress = 1
 cf=ConfigParser.ConfigParser()
 
 if os.path.exists(filename):
@@ -58,10 +58,11 @@ while True:
     #print "local_current_URL = " + local_current_URL
 
     local_current_URL = local_current_URL.split('/')
-
+    #print "local_current_URL(1) = \n\n\n\n\n"
+    #print local_current_URL
     local_current_URL.pop()
 
-    ##print "local_current_URL = " + local_current_URL
+
 
     
 
@@ -92,9 +93,10 @@ while True:
     #print '*'*40
     ##print pic_path
     
-       
+    #print local_current_URL   
     pic_path_temp = local_current_URL[:]
-    
+    #print "pic_path_temp(2)="
+    #print pic_path_temp
     temp_pic = pic_path[0].split('/')
     
     temp_temp = []
@@ -170,9 +172,10 @@ while True:
       
 
     with open(str(page_num)+'-'+subject+".txt","wb") as content_file:
+        content_file.write("\n".join(content).encode('utf-8'))
         ##print "content ="
         ##print content
-        content_file.write("\n".join(content).encode('utf-8'))
+        
 
     
     content_file = str(page_num)+".txt"
