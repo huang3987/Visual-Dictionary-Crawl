@@ -15,6 +15,7 @@ local_next_URL = ''
 
 
 filename = 'profile.ini'
+word_counter = 0
 
 progress = 1
 cf=ConfigParser.ConfigParser()
@@ -162,7 +163,7 @@ while True:
         line.append(sentence)
         line = '\\'.join(line)
         content.append(line)
-
+        word_counter = word_counter + 1
         ##print '*'*40
 
         
@@ -232,3 +233,11 @@ while True:
 cf.set('mission','progress',progress+1)
 cf.set('mission','URL',local_next_URL)
 cf.write(open("profile.ini", "w"))
+
+script=[]
+with open("adjust.ahk",'r') as ahk_script:
+    script = ahk_script.readlines()
+    #print script
+script[0] = 'counter = %s\n' % str(word_counter)
+with open("adjust.ahk",'w') as ahk_script:    
+    ahk_script.writelines(script)

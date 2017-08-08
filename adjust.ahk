@@ -1,4 +1,4 @@
-counter = 121
+counter = 93
 hotkey RButton, dotheloop
 Esc::ExitApp
 return 
